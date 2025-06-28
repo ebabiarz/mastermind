@@ -2,7 +2,12 @@ require_relative 'lib/human_player'
 require_relative 'lib/computer_player'
 require_relative 'lib/game'
 
+game = Game.new
+player = HumanPlayer.new
+comp = ComputerPlayer.new
 
+player.get_guess
+game.compare_guess(player, comp)
 
 
 =begin
@@ -23,9 +28,9 @@ compare human guess to computer code:
     - If index matches, red peg. If not, but included, white peg.
 provide feedback:
   - formatting?
-    - + for correct color/number and position
-    - - for correct color/number, wrong position
-    - O for incorrect color/number
+    - "=" for correct color/number and position
+    - "+" for correct color/number, wrong position
+    - "x" for incorrect color/number
 classes:
   - ComputerPlayer
     - secret code

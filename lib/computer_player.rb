@@ -11,10 +11,10 @@ class ComputerPlayer
     array = Array.new
     i = 0
     while i < 4
-      array.push(Random.rand(6))
+      array.push(Random.rand(6).to_s)
       i += 1
     end
-    array = convert_to_color(array)
+    return array
   end
 
   def convert_to_color(array)
