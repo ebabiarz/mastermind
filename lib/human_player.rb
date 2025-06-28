@@ -10,13 +10,31 @@ class HumanPlayer
 
   def get_guess
     guess_array = gets.chomp.to_s.downcase.split(", ")
-    guess_converted = convert_guess(guess_array)
-    if check_duplicate_guess(guess_converted) == "duplicate"
-      puts "You have already guessed that code"
-      self.get_guess
+    if check_valid_guess(guess_array) == false
+      puts "Not a valid guess. Try again."
+      get_guess
     else
-      self.guesses.push(guess_converted)
-      return guess_converted
+      guess_converted = convert_guess(guess_array)
+      if check_duplicate_guess(guess_converted) == "duplicate"
+        puts "You have already guessed that code"
+        self.get_guess
+      else
+        self.guesses.push(guess_converted)
+        return guess_converted
+      end
+    end
+  end
+
+  def check_valid_guess(guess)
+    if guess.length != 4
+      return false
+    else
+      guess.each do |element|
+        if COLOR_CODE.values.include?(element) == false
+          return false
+        end
+      end
+      return true
     end
   end
 
