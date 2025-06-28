@@ -1,5 +1,7 @@
 class HumanPlayer
 
+  COLOR_CODE = {'0': "blue", '1': "red", '2': "yellow", '3': "orange", '4': "green", '5': "purple"}
+
   attr_accessor :guesses
   
   def initialize
@@ -7,8 +9,16 @@ class HumanPlayer
   end
 
   def get_guess
-    guess = gets.chomp.to_s.downcase
-    guess_array = guess.split(", ")
-    return guess_array
+    guess_array = gets.chomp.to_s.downcase.split(", ")
+    guess_converted = convert_guess(guess_array)
+    @guesses.push(guess_converted)
+    return guess_converted
+  end
+
+  def convert_guess(array)
+    array.each_index do |index|
+      array[index] = COLOR_CODE.key(array[index]).to_s
+    end
+    return array
   end
 end
