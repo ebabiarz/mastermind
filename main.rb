@@ -7,7 +7,7 @@ player = HumanPlayer.new
 comp = ComputerPlayer.new
 
 player.get_guess
-game.compare_guess(player, comp)
+game.check_for_win(player, comp)
 
 
 =begin

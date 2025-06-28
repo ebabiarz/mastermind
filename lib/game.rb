@@ -6,6 +6,14 @@ class Game
     @turn_number = 1
   end
 
+  def check_for_win(player, comp)
+    if compare_guess(player, comp) == ["=", "=", "=", "="]
+      puts "You win!"
+    else
+      puts "#{compare_guess(player, comp).join(", ")}"
+    end
+  end
+
   def compare_guess(player, comp)
     feedback = Array.new
     player.guesses.last.each_index do |index|
