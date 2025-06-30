@@ -3,28 +3,36 @@ class Game
   attr_accessor :turn_number
   
   def initialize
-    @turn_number = 1
+    @turn_number = 0
   end
 
   def check_for_win(player, comp)
-    if compare_guess(player, comp) == ["=", "=", "=", "="]
+    feedback = compare_guess(player, comp)
+    if feedback == ["=", "=", "=", "="]
       puts "You win!"
     else
-      puts "#{compare_guess(player, comp).join(", ")}"
+      puts "#{feedback.join(", ")}"
     end
   end
 
   def compare_guess(player, comp)
     feedback = Array.new
     player.guesses.last.each_index do |index|
-      if comp.secret_code.include?(player.guesses.last[index])
-        if comp.secret_code.index(player.guesses.last[index]) == index
-          feedback.push("=")
+      value = player.guesses.last[index]
+      if comp.secret_code.include?(value)
+        locations = Array.new
+        comp.secret_code.each_index do |index|
+          if comp.secret_code[index] == value
+            locations.push(index)
+          end
+        end
+        if locations.include?(index)
+          feedback[index] = "="
         else
-          feedback.push("+")
+          feedback[index] = "+"
         end
       else
-        feedback.push("x")
+        feedback[index] = "x"
       end
     end
     return feedback

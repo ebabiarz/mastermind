@@ -2,12 +2,25 @@ require_relative 'lib/human_player'
 require_relative 'lib/computer_player'
 require_relative 'lib/game'
 
+def play_game(player, comp, game)
+  while game.turn_number < 12
+    play_turn(player, comp, game)
+  end
+  puts "Game Over!"
+  puts "The code was #{comp.secret_code}"
+end
+
+def play_turn(player, comp, game)
+  player.get_guess
+  game.check_for_win(player, comp)
+  game.turn_number += 1
+end
+
 game = Game.new
 player = HumanPlayer.new
 comp = ComputerPlayer.new
 
-player.get_guess
-game.check_for_win(player, comp)
+play_game(player, comp, game)
 
 
 =begin
