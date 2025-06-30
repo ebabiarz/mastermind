@@ -10,6 +10,7 @@ class Game
     feedback = compare_guess(player, comp)
     if feedback == ["=", "=", "=", "="]
       puts "You win!"
+      play_again?
     else
       puts "#{feedback.join(", ")}"
     end
