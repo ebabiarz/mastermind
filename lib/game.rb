@@ -8,11 +8,21 @@ class Game
 
   def check_for_win(code_guesser, code_maker)
     feedback = compare_guess(code_guesser, code_maker)
-    if feedback == ["=", "=", "=", "="]
-      puts "You win!"
-      play_again?
+    if code_guesser.class == HumanPlayer
+      if feedback == ["=", "=", "=", "="]
+        puts "You win!"
+        play_again?
+      else
+        puts "#{feedback.join(", ")}"
+      end
     else
-      puts "#{feedback.join(", ")}"
+      if feedback == ["=", "=", "=", "="]
+        puts "The computer guessed #{code_guesser.convert_to_color(code_guesser.guesses.last)}. You lose!"
+        play_again?
+      else
+        puts "The computer guessed #{code_guesser.convert_to_color(code_guesser.guesses.last)}"
+        puts "The computer receives this feedback: #{feedback.join(", ")}"
+      end
     end
   end
 

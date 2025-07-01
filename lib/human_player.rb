@@ -19,7 +19,7 @@ class HumanPlayer
       puts "Not a valid code. Try again"
       self.get_secret_code
     else
-      self.secret_code.push(convert_guess(code_array))
+      self.secret_code = self.convert_guess(code_array)
     end
   end
 

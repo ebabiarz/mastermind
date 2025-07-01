@@ -1,11 +1,15 @@
 class ComputerPlayer
   COLOR_CODE = {'0': "blue", '1': "red", '2': "yellow", '3': "orange", '4': "green", '5': "purple"}
 
-  attr_accessor :secret_code
+  attr_accessor :guesses, :secret_code
 
   def initialize
     @secret_code = self.generate_secret_code
     @guesses = []
+  end
+
+  def get_guess
+    self.guesses.push(generate_secret_code)
   end
 
   def generate_secret_code

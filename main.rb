@@ -3,7 +3,7 @@ require_relative 'lib/computer_player'
 require_relative 'lib/game'
 require_relative 'lib/methods'
 
-start_new_game
+type_of_game?
 =begin
 computer creates code:
   - random number generated pushed to an array 4 times
