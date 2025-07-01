@@ -6,8 +6,8 @@ class Game
     @turn_number = 0
   end
 
-  def check_for_win(player, comp)
-    feedback = compare_guess(player, comp)
+  def check_for_win(code_guesser, code_maker)
+    feedback = compare_guess(code_guesser, code_maker)
     if feedback == ["=", "=", "=", "="]
       puts "You win!"
       play_again?
@@ -16,14 +16,14 @@ class Game
     end
   end
 
-  def compare_guess(player, comp)
+  def compare_guess(code_guesser, code_maker)
     feedback = Array.new
-    player.guesses.last.each_index do |index|
-      value = player.guesses.last[index]
-      if comp.secret_code.include?(value)
+    code_guesser.guesses.last.each_index do |index|
+      value = code_guesser.guesses.last[index]
+      if code_maker.secret_code.include?(value)
         locations = Array.new
-        comp.secret_code.each_index do |index|
-          if comp.secret_code[index] == value
+        code_maker.secret_code.each_index do |index|
+          if code_maker.secret_code[index] == value
             locations.push(index)
           end
         end
