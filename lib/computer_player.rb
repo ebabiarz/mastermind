@@ -5,6 +5,7 @@ class ComputerPlayer
 
   def initialize
     @secret_code = self.generate_secret_code
+    @guesses = []
   end
 
   def generate_secret_code

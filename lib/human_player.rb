@@ -2,17 +2,32 @@ class HumanPlayer
 
   COLOR_CODE = {'0': "blue", '1': "red", '2': "yellow", '3': "orange", '4': "green", '5': "purple"}
 
-  attr_accessor :guesses
+  attr_accessor :guesses, :secret_code
   
   def initialize
+    @secret_code = []
     @guesses = []
+  end
+
+  def get_secret_code
+    puts "Enter your secret code"
+    puts "Make your code in this format:"
+    puts "color, color, color, color"
+    puts "ex: blue, green, yellow, red"
+    code_array = gets.chomp.to_s.downcase.split(", ")
+    if check_valid_guess(code_array) == false
+      puts "Not a valid code. Try again"
+      self.get_secret_code
+    else
+      self.secret_code.push(convert_guess(code_array))
+    end
   end
 
   def get_guess
     guess_array = gets.chomp.to_s.downcase.split(", ")
     if check_valid_guess(guess_array) == false
       puts "Not a valid guess. Try again."
-      get_guess
+      self.get_guess
     else
       guess_converted = convert_guess(guess_array)
       if check_duplicate_guess(guess_converted) == "duplicate"
