@@ -13,15 +13,15 @@ class Game
         puts "You win!"
         play_again?
       else
-        puts "#{feedback.join(", ")}"
+        return feedback.join(", ")
       end
     else
       if feedback == ["=", "=", "=", "="]
-        puts "The computer guessed #{code_guesser.convert_to_color(code_guesser.guesses.last)}. You lose!"
+        last_guess = code_guesser.guesses.last.clone
+        puts "The computer guessed #{code_guesser.convert_to_color(last_guess)}. You lose!"
         play_again?
       else
-        puts "The computer guessed #{code_guesser.convert_to_color(code_guesser.guesses.last)}"
-        puts "The computer receives this feedback: #{feedback.join(", ")}"
+        return feedback
       end
     end
   end

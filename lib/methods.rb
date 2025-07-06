@@ -29,11 +29,16 @@ def play_turn(code_guesser, code_maker, game)
     puts "Possible colors: Red, Green, Blue, Yellow, Purple, Orange"
     puts "Guess the code"
     code_guesser.get_guess
-    game.check_for_win(code_guesser, code_maker)
+    feedback = game.check_for_win(code_guesser, code_maker)
+    puts "#{feedback}"
     game.turn_number += 1
   else
     code_guesser.get_guess
-    game.check_for_win(code_guesser, code_maker)
+    feedback = game.check_for_win(code_guesser, code_maker)
+    code_guesser.feedback.push(feedback)
+    last_guess = code_guesser.guesses.last.clone
+    puts "The computer guessed #{code_guesser.convert_to_color(last_guess)}"
+    puts "The computer receives this feedback: #{feedback.join(", ")}"
     game.turn_number += 1
     puts "press enter to continue"
     pause = gets.chomp.to_s.downcase
