@@ -37,7 +37,7 @@ def play_turn(code_guesser, code_maker, game)
     feedback = game.check_for_win(code_guesser, code_maker)
     code_guesser.feedback.push(feedback)
     last_guess = code_guesser.guesses.last.clone
-    puts "The computer guessed #{code_guesser.convert_to_color(last_guess)}"
+    puts "The computer guessed #{code_guesser.convert_to_color(last_guess).join(", ")}"
     puts "The computer receives this feedback: #{feedback.join(", ")}"
     game.turn_number += 1
     puts "press enter to continue"

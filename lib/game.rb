@@ -18,7 +18,7 @@ class Game
     else
       if feedback == ["=", "=", "=", "="]
         last_guess = code_guesser.guesses.last.clone
-        puts "The computer guessed #{code_guesser.convert_to_color(last_guess)}. You lose!"
+        puts "The computer guessed #{code_guesser.convert_to_color(last_guess).join(", ")}. You lose!"
         play_again?
       else
         return feedback
