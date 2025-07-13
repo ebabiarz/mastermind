@@ -26,7 +26,12 @@ end
 
 def play_turn(code_guesser, code_maker, game)
   if code_guesser.class == HumanPlayer
-    puts "Possible colors: Red, Green, Blue, Yellow, Purple, Orange"
+    puts "Possible colors: " + Rainbow("Red").red + 
+    ", " + Rainbow("Green").green + 
+    ", " + Rainbow("Blue").blue + 
+    ", " + Rainbow("Yellow").yellow + 
+    ", " + Rainbow("Purple").purple + 
+    ", " + Rainbow("Orange").orange
     puts "Guess the code"
     code_guesser.get_guess
     feedback = game.check_for_win(code_guesser, code_maker)

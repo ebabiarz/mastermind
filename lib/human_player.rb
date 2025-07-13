@@ -14,7 +14,12 @@ class HumanPlayer
     puts "Make your code in this format:"
     puts "color, color, color, color"
     puts "ex: blue, green, yellow, red"
-    puts "Possible colors: Red, Green, Blue, Yellow, Purple, Orange"
+    puts "Possible colors: " + Rainbow("Red").red + 
+    ", " + Rainbow("Green").green + 
+    ", " + Rainbow("Blue").blue + 
+    ", " + Rainbow("Yellow").yellow + 
+    ", " + Rainbow("Purple").purple + 
+    ", " + Rainbow("Orange").orange
     code_array = gets.chomp.to_s.downcase.split(", ")
     if check_valid_guess(code_array) == false
       puts "Not a valid code. Try again"
