@@ -1,0 +1,1 @@
+This project is part of The Odin Project's Ruby course. It is a command line version of the game Mastermind.
